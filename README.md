@@ -1,7 +1,7 @@
-# Library SpringBoot - AWS Lambdas Functions
+# Library SpringBoot - Hypermedia
 
 This repository uses Java, SpringBoot to create an API Rest with Hypermedia Controls and documented with OpenAPI. 
-The parts of software development (building, testing, and deploying) are automated  using Jenkins.
+The parts of software development (building, testing, and deploying) are automated using Jenkins.
 
 
 ## Key characteristics
@@ -64,7 +64,6 @@ This repository uses several dependencies
 
 The endpoints arte documented in this class through annotations such as _@Operation_, _@Parameter_, _@Tag_
 
-        
 ### The Global Controller Advice  (org.hillmerch.player.web.advice.GlobalErrorAdvice)
 
 This Global Controller advice is used to handle exceptions: _ConstraintViolationException_, _MethodArgumentNotValidException_,
@@ -77,6 +76,10 @@ This Player Controller advice is used to handle exceptions that were created in 
 ### The Security Controller Advice  (org.hillmerch.player.web.advice.SecurityErrorAdvice)
 
 This Security Controller advice is reserved to handle future security exceptions. It was added to the project for architecture reasons.
+
+### The DTOs-Entities mapper  (org.hillmerch.player.web.mapper.MapperProducer)
+
+This MapperProducer class create a Bean of the `type org.modelmapper.ModelMapper`,this bean is used to transform DTOs into entities, and entities into DTOs.
 
 
 ## Bonus track: Jenkins 

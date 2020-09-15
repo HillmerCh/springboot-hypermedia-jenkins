@@ -7,6 +7,7 @@ import org.hillmerch.player.model.dao.PlayerDao;
 import org.hillmerch.player.model.model.Player;
 import org.hillmerch.player.client.dto.PlayerDTO;
 import org.hillmerch.player.web.exception.PlayerNotFoundException;
+import org.hillmerch.player.web.mapper.MapperProducer;
 import org.hillmerch.player.web.service.PlayerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -18,22 +19,24 @@ import org.springframework.stereotype.Service;
 public class PlayerServiceImpl implements PlayerService {
 
 	private final PlayerDao playerDao;
+	private final ModelMapper modelMapper;
 
 
-	public PlayerServiceImpl(PlayerDao playerDao) {
+	public PlayerServiceImpl(PlayerDao playerDao, ModelMapper modelMapper) {
 		this.playerDao = playerDao;
+		this.modelMapper = modelMapper;
 	}
 
 	@Override
 	public Page<PlayerDTO> findAll(Pageable pageable){
 		Page<Player> playerPage = this.playerDao.findAll(pageable);
 
-		ModelMapper modelMapper = new ModelMapper();
-
 		List<PlayerDTO> playerDTODtoList = playerPage.getContent()
 				.stream()
 				.map(p -> modelMapper.map(p, PlayerDTO.class))
 				.collect(Collectors.toList());
+
+		System.out.println(playerDTODtoList);
 
 		return new PageImpl<>( playerDTODtoList, pageable, playerPage.getTotalElements());
 	}
@@ -41,13 +44,11 @@ public class PlayerServiceImpl implements PlayerService {
 	@Override
 	public List<PlayerDTO> findByUniformNumber(Long uniformNumber){
 		List<Player> playerList = this.playerDao.findByUniformNumber(uniformNumber);
-		ModelMapper modelMapper = new ModelMapper();
 		return playerList.stream().map( p-> modelMapper.map(p, PlayerDTO.class) ).collect( Collectors.toList());
 	}
 
 	@Override
 	public PlayerDTO save(PlayerDTO newPlayerDTO){
-		ModelMapper modelMapper = new ModelMapper();
 
 		Player player = modelMapper.map(newPlayerDTO, Player.class);
 
@@ -58,8 +59,6 @@ public class PlayerServiceImpl implements PlayerService {
 	@Override
 	public PlayerDTO findById(Long idPlayer){
 		Player player = this.playerDao.findById( idPlayer ).orElseThrow(() -> new PlayerNotFoundException( idPlayer));
-
-		ModelMapper modelMapper = new ModelMapper();
 
 		return modelMapper.map(player, PlayerDTO.class);
 	}
@@ -75,7 +74,6 @@ public class PlayerServiceImpl implements PlayerService {
 		player.setPosition( Player.Position.valueOf( newPlayerDTO.getPosition() ) );
 		player.setTeam( newPlayerDTO.getTeam() );*/
 
-		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.map( newPlayerDTO,  player);
 		player.setId( idPlayer );
 
