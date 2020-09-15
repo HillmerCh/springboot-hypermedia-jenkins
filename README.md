@@ -42,18 +42,17 @@ This repository uses several dependencies
 * HATEOAS (Hypermedia As The Engine Of Application State)
 
 
-    org.springframework.boot:spring-boot-starter-data-rest
+        org.springframework.boot:spring-boot-starter-data-rest
     
 * OpenAPI
 
 
-    org.springdoc:springdoc-openapi-ui
-    
+        org.springdoc:springdoc-openapi-ui
     
 * SpringBoot Java Bean Validation
 
 
-    org.springframework.boot:spring-boot-starter-validation
+        org.springframework.boot:spring-boot-starter-validation
 
 * Mapper
 
