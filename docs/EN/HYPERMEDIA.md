@@ -48,7 +48,7 @@ This repository uses several dependencies
 
 ### The Controller Definition  (org.hillmerch.player.web.PlayerControllerDefinition)
 
-The endpoints arte documented in this class through annotations such as _@Operation_, _@Parameter_, _@Tag_
+The endpoints are documented in this class through annotations such as _@Operation_, _@Parameter_, _@Tag_
 
 ### The Global Controller Advice  (org.hillmerch.player.web.advice.GlobalErrorAdvice)
 
@@ -63,6 +63,6 @@ This Player Controller advice is used to handle exceptions that were created in 
 
 This Security Controller advice is reserved to handle future security exceptions. It was added to the project for architecture reasons.
 
-### The DTOs-Entities mapper  (org.hillmerch.player.web.mapper.MapperProducer)
+### The DTOs-Entities-DTOs mapper  (org.hillmerch.player.web.mapper.MapperProducer)
 
-This MapperProducer class create a Bean of the `type org.modelmapper.ModelMapper`,this bean is used to transform DTOs into entities, and entities into DTOs.
+This MapperProducer class creates a Bean of the `type org.modelmapper.ModelMapper`, this bean is used to transform DTOs into entities, and entities into DTOs.

@@ -1,8 +1,12 @@
 # Players service SpringBoot - Hypermedia
 
+[Ir a la versión en Español](/README_ES.md)
+
 This repository contains an API Rest created with Java SpringBoot, using some techniques such as Hypermedia Controls,documented with OpenAPI,
 OAuth 2.0 security.
- 
+
+The API manages the information of baseball Players.
+
 The parts of software development (building, testing, and deploying) could be automated using Jenkins.
 
 
@@ -40,4 +44,4 @@ The parts of software development (building, testing, and deploying) could be au
 
 - [Hypermedia controls - Documentation with OpenAPI](/docs/EN/HYPERMEDIA.md)
 - [Jenkins](/docs/EN/JENKIS.md)
-- [Players service SpringBoot - Security with OAuth 2.0](/docs/EN/SECURITY.md)
+- [Security with OAuth 2.0 and OKTA](/docs/EN/SECURITY.md)

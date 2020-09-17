@@ -1,4 +1,4 @@
-# Players service SpringBoot - Security with OAuth 2.0 
+# Players service SpringBoot - Security with OAuth 2.0 and OKTA
 
 ## Testing-Running this repo
 
@@ -27,7 +27,7 @@
         
 ## The code
 
-Changes to the code are not necessary to add security to the API,  adding some dependencies and setting OKTA makes it a secure API.
+Changes to the code (classes) are not necessary to add security to the API,  adding some dependencies and setting OKTA makes it a secure API.
 
 ### The Web Security Configurer Adapter  (org.hillmerch.player.web.config.WebSecurityConfig)
 
@@ -62,7 +62,7 @@ Although no additional code is needed to add security, the `WebSecurityConfig` c
         
 
 
-### OAuth 2.0 configuration
+### OAuth 2.0 - OKTA configurations
 
  
 * To use a OKTA is necessary
