@@ -25,7 +25,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
+        <java.version>15</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -42,7 +42,14 @@
         <!--Swagger Annotations-->
         <swagger-annotations.version>2.1.4</swagger-annotations.version>
 
-</properties>
+        <!--Spring oauth2-->
+        <spring-oauth2.version>2.5.0.RELEASE</spring-oauth2.version>
+        <!--Spring OKTA-->
+        <okta-spring.version>1.4.0</okta-spring.version>
+
+    </properties>
+
+
     <dependencies>
 
         <!-- Mapper dependency -->
@@ -133,8 +140,34 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>
 
+        <!--Security dependencies-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.okta.spring</groupId>
+            <artifactId>okta-spring-boot-starter</artifactId>
+            <version>${okta-spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${spring-oauth2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>

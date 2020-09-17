@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,11 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/*
+* This Test Case class is deprecated since a new class PlayerControllerWithMockMvcTest was created.
+* */
+@Deprecated
+@Disabled
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PlayerControllerTest {
 
@@ -45,7 +51,13 @@ class PlayerControllerTest {
 	@Test
 	@DisplayName("Getting all Players")
 	void getAllPlayers() {
+
+		ResponseEntity response2 = restTemplate.getForEntity( restUrl, Object.class );
+		System.out.println(response2.getHeaders());
+
 		ResponseEntity<PagedModel> response = restTemplate.getForEntity( restUrl, PagedModel.class );
+
+		assertEquals( HttpStatus.OK, response.getStatusCode() );
 
 		ModelMapper modelMapper = new ModelMapper();
 		List<PlayerDTO> personResponseDtoList = (List<PlayerDTO>) response.getBody().getContent()
@@ -53,7 +65,6 @@ class PlayerControllerTest {
 				.map(p -> modelMapper.map(p, PlayerDTO.class))
 				.collect(Collectors.toList());
 
-		assertEquals( HttpStatus.OK, response.getStatusCode() );
 		assertTrue( personResponseDtoList.size() > 0 );
 	}
 
@@ -62,13 +73,14 @@ class PlayerControllerTest {
 	void getPlayersByUniformNumber() {
 		ResponseEntity<CollectionModel> response = restTemplate.getForEntity( restUrl + "/?uniformNumber=3&uniformNumberLast=9", CollectionModel.class );
 
+		assertEquals( HttpStatus.OK, response.getStatusCode() );
+
 		ModelMapper modelMapper = new ModelMapper();
 		List<PlayerDTO> personResponseDtoList = (List<PlayerDTO>) response.getBody().getContent()
 				.stream()
 				.map(p -> modelMapper.map(p, PlayerDTO.class))
 				.collect(Collectors.toList());
 
-		assertEquals( HttpStatus.OK, response.getStatusCode() );
 		assertTrue( personResponseDtoList.size() > 0 );
 	}
 
@@ -160,7 +172,7 @@ class PlayerControllerTest {
 	}
 
 	@Test
-	@DisplayName("Getting a NOT_FOUND when try to put a Player identified by -1")
+	@DisplayName("Getting a NOT_FOUND when try to delete a Player identified by -1")
 	void givenAPlayerIdentifiedBy1_whenRunDeletePlayer_thenGetANotFound() {
 		String resourceUrl = restUrl + "/-1";
 		restTemplate.delete( restUrl + "/2" );
