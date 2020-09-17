@@ -38,7 +38,6 @@ public class PlayerController implements PlayerControllerDefinition {
 		this.pagedResourcesAssembler = pagedResourcesAssembler;
 	}
 
-
 	@Override
 	public ResponseEntity<PagedModel<EntityModel<PlayerDTO>>> getAllPlayers(Integer pageNumber,
 																			Integer pageSize,

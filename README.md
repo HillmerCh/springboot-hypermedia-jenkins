@@ -1,10 +1,12 @@
-# Library SpringBoot - Hypermedia
+# Players service SpringBoot - Hypermedia
 
-This repository uses Java, SpringBoot to create an API Rest with Hypermedia Controls and documented with OpenAPI. 
-The parts of software development (building, testing, and deploying) are automated using Jenkins.
+This repository contains an API Rest created with Java SpringBoot, using some techniques such as Hypermedia Controls,documented with OpenAPI,
+OAuth 2.0 security.
+ 
+The parts of software development (building, testing, and deploying) could be automated using Jenkins.
 
 
-## Key characteristics
+## API Key characteristics
 
 - This project has 3 modules: **client**, **model** and **web**.
 - The controller doesn't use **entities**, data is shared through **DTO** (_Data transfer object_)
@@ -32,79 +34,10 @@ The parts of software development (building, testing, and deploying) are automat
     * http://localhost:8080/api-docs
     
     * http://localhost:8080/api-docs-ui.html
-    
-## The code
-
-This repository uses several dependencies
-
-### Dependencies (pom.xml file)
-  
-* HATEOAS (Hypermedia As The Engine Of Application State)
 
 
-        org.springframework.boot:spring-boot-starter-data-rest
-    
-* OpenAPI
+## Content
 
-
-        org.springdoc:springdoc-openapi-ui
-    
-* SpringBoot Java Bean Validation
-
-
-        org.springframework.boot:spring-boot-starter-validation
-
-* Mapper
-
-
-        org.modelmapper:modelmapper
-
-### The Controller Definition  (org.hillmerch.player.web.PlayerControllerDefinition)
-
-The endpoints arte documented in this class through annotations such as _@Operation_, _@Parameter_, _@Tag_
-
-### The Global Controller Advice  (org.hillmerch.player.web.advice.GlobalErrorAdvice)
-
-This Global Controller advice is used to handle exceptions: _ConstraintViolationException_, _MethodArgumentNotValidException_,
-_HttpMessageNotReadableException_ and _PropertyReferenceException_. 
-
-### The Player Controller Advice  (org.hillmerch.player.web.advice.PlayerControllerAdvice)
-
-This Player Controller advice is used to handle exceptions that were created in this project: `PlayerNotFoundException`
-
-### The Security Controller Advice  (org.hillmerch.player.web.advice.SecurityErrorAdvice)
-
-This Security Controller advice is reserved to handle future security exceptions. It was added to the project for architecture reasons.
-
-### The DTOs-Entities mapper  (org.hillmerch.player.web.mapper.MapperProducer)
-
-This MapperProducer class create a Bean of the `type org.modelmapper.ModelMapper`,this bean is used to transform DTOs into entities, and entities into DTOs.
-
-
-## Bonus track: Jenkins 
-
-Next steps can be used to build the project using Jenkins. Jenkins is running in a docker container. 
-
-### The Jenkins file
-
-Three stages are created: **SCM**, **compile** and **deploy**
-
-
-* Create a docker volume 
-    docker volume create jenkins-data
-
-* Run Jenkins on Docker with an external volumen
-
-    docker run -p 8080:8080 -v jenkins_home:/var/jenkins_home jenkins/jenkins:jdk11 
-
-* Login on Jenkins console:  http://localhost:8080/
-
-* Create a new item with the type pipeline 
-    
-    * Definition= Pipeline script from SCM
-    * SCM= Git
-    * Repository URL= the git repository with this project
-    
-* Build the pipeline
-
-
+- [Hypermedia controls - Documentation with OpenAPI](/docs/EN/HYPERMEDIA.md)
+- [Jenkins](/docs/EN/JENKIS.md)
+- [Players service SpringBoot - Security with OAuth 2.0](/docs/EN/SECURITY.md)

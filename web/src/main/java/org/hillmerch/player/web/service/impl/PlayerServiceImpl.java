@@ -7,7 +7,6 @@ import org.hillmerch.player.model.dao.PlayerDao;
 import org.hillmerch.player.model.model.Player;
 import org.hillmerch.player.client.dto.PlayerDTO;
 import org.hillmerch.player.web.exception.PlayerNotFoundException;
-import org.hillmerch.player.web.mapper.MapperProducer;
 import org.hillmerch.player.web.service.PlayerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -35,8 +34,6 @@ public class PlayerServiceImpl implements PlayerService {
 				.stream()
 				.map(p -> modelMapper.map(p, PlayerDTO.class))
 				.collect(Collectors.toList());
-
-		System.out.println(playerDTODtoList);
 
 		return new PageImpl<>( playerDTODtoList, pageable, playerPage.getTotalElements());
 	}
